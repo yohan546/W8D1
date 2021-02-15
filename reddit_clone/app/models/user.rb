@@ -39,7 +39,7 @@ class User < ApplicationRecord
         BCrypt::Password.new(password_digest).is_password?(password)
     end
 
-    def rest_session_token! 
+    def reset_session_token! 
         self.session_token = SecureRandom.base64 
         self.save! 
         self.session_token
