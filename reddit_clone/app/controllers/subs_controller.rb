@@ -1,4 +1,5 @@
 class SubsController < ApplicationController
+    before_action 
 
     def index
         @subs = Sub.all 
@@ -17,10 +18,17 @@ class SubsController < ApplicationController
 
     def create
         @sub = Sub.new(sub_params)
+
         if @sub.save
             redirect_to subs_url
-            
+        else
+            flash.now[:errors] = @sub.errors.full_messages 
+            render :new 
         end
+    end
+
+    def edit 
+        
     end
     
     private
