@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
     helper_method :signed_in?, :current_user
-    
+
     def current_user
         @current_user ||= User.find_by(session_token: session[:session_token])
     end
@@ -24,11 +24,4 @@ class ApplicationController < ActionController::Base
         redirect_to new_session_url unless signed_in?
     end
 
-    def current_sub 
-        @sub = Sub.find_by(title: )
-    end
-
-    def require_moderator 
-        current_user.id == @sub.moderator
-    end
 end

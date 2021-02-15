@@ -17,4 +17,8 @@ class Sub < ApplicationRecord
     belongs_to :creator,
         foreign_key: :moderator,
         class_name: :User
+
+    has_many :posts,
+        foreign_key: :sub_id,
+        class_name: :Sub
 end
