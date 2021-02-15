@@ -16,7 +16,7 @@ class Post < ApplicationRecord
 
     belongs_to :sub,
         foreign_key: :sub_id,
-        class_name: :Sub
+        class_name: :Post
     
     belongs_to :author,
         foreign_key: :author_id,

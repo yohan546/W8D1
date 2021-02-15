@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-    before_action :require_author, only: [:edit, :update]
-    before_action :require_signed_in! except: [:show]
+    # before_action :require_author, only: [:edit, :update]
+    # before_action :require_signed_in! except: [:show]
 
 
     def show
@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.new(post_params)
+        @post = current_user.posts.new(post_params)
         if @post.save
             redirect_to post_url(@post)
         else
